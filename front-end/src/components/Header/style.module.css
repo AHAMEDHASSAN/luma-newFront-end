@@ -1,0 +1,29 @@
+/* === Header === */
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0 16px; */
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  direction: ltr; /* إبقاء ترتيب العناصر ثابتًا لجهة اليسار→اليمين */
+}
+
+body.dark-mode .Header {
+  background-color: #1e1e1e;
+}
+
+/* === Logo === */
+.Logo {
+  width: 200px;
+  max-width: 40vw;
+  height: auto;
+}
+/* === Dark Mode + Language Container === */
+.DarkLun {
+  display: flex;
+  align-items: center;
+  /* gap: 8px; قللنا الفجوة قليلًا */
+  flex-wrap: wrap;
+}

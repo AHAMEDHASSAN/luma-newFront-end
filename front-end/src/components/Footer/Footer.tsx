@@ -1,7 +1,7 @@
 // Footer.tsx (أو اسم ملف الفوتر عندك)
 import { Box, Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import styles from "../../style.module.css";
+import styles from "./style.module.css";
 
 export default function Footer() {
   const { t } = useTranslation();

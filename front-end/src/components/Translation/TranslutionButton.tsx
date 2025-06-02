@@ -2,35 +2,15 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { languages } from "../Translation/translations";
-
 const LanguageButton = () => {
   const { i18n } = useTranslation();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
-
   const currentLang =
-    languages.find((lang) => lang.code === i18n.language) || languages[0];
-
+    languages.find((l) => l.code === i18n.language) || languages[0];
   useEffect(() => {
     document.body.dir = i18n.language === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
-
-  // تحديد نوع الحدث
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  // تحديد نوع كود اللغة
-  const handleSelect = (code: string) => {
-    i18n.changeLanguage(code);
-    localStorage.setItem("i18nextLng", code);
-    handleClose();
-  };
-
   return (
     <>
       <Button
@@ -40,17 +20,17 @@ const LanguageButton = () => {
         aria-expanded={open ? "true" : undefined}
         variant="outlined"
         size="small"
-        onClick={handleClick}
+        onClick={(e) => setAnchorEl(e.currentTarget)}
         startIcon={
           <img
             src={currentLang.flag}
             alt={currentLang.name}
             style={{
-              width: 24,
-              height: 16,
-              objectFit: "cover",
+              width: 48,
+              height: 33,
               marginInlineEnd: 8,
-              borderRadius: "2px",
+              borderRadius: 2,
+              objectFit: "cover",
             }}
           />
         }
@@ -62,13 +42,18 @@ const LanguageButton = () => {
         id="language-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "language-button",
-        }}
+        onClose={() => setAnchorEl(null)}
+        MenuListProps={{ "aria-labelledby": "language-button" }}
       >
         {languages.map((lang) => (
-          <MenuItem key={lang.code} onClick={() => handleSelect(lang.code)}>
+          <MenuItem
+            key={lang.code}
+            onClick={() => {
+              i18n.changeLanguage(lang.code);
+              localStorage.setItem("i18nextLng", lang.code);
+              setAnchorEl(null);
+            }}
+          >
             <img
               src={lang.flag}
               alt={lang.name}
@@ -76,9 +61,7 @@ const LanguageButton = () => {
                 width: 32,
                 height: 22,
                 marginInlineEnd: 8,
-                objectFit: "cover",
-                borderRadius: "2px",
-                backgroundColor: "#fff",
+                borderRadius: 2,
               }}
             />
             {lang.name}
@@ -88,5 +71,4 @@ const LanguageButton = () => {
     </>
   );
 };
-
 export default LanguageButton;

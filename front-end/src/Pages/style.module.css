@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.inputContainer {
+  margin-top: 70px !important;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input {
+  width: 100% !important;
+  background-color: white;
+}
+
+/* للتأكد من أن النص ليس قريبًا جدًا من الحواف */
+.input input {
+  padding: 12px 14px !important;
+}
+
+/* للتنسيق في حالة اللغة العربية */
+[dir="rtl"] .inputGroup {
+  text-align: right;
+}
+
+.socialSection {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.socialContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.socialButton {
+  width: 44px;
+  height: 44px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .HadingTypography {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.FontLink {
+  font-size: 13px;
+}
+
+.accountLink {
+  color: var(--text-primary-color, #000);
+  font-size: 12px;
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .accountLink {
+    margin-top: 8px; /* mt={1} */
+  }
+}
+
+.LogoImage {
+  height: 150px;
+  object-fit: contain;
+}
+
+.logo {
+  width: 50px;
+  height: 30px;
+  object-fit: cover;
+  margin-inline-end: 8px;
+}

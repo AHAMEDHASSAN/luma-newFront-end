@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import React from "react";
 import Logo from "../../assets/logo.webp";
-import styles from "../../style.module.css";
 import DarkMod from "../DarkMod/DarkMod";
 import TranslationButton from "../Translation/TranslutionButton";
 import "../Translation/i18n"; // مسار ملف i18n.js
+import styles from "./style.module.css";
 
 const LoginFrom: React.FC = () => {
   return (
