@@ -4,8 +4,8 @@ import Ar from "../../assets/sy.svg";
 import tr from "../../assets/tr.svg";
 import En from "../../assets/us.svg";
 /* the language */
-import English from "./English";
 import Arabic from "./language/Arabic";
+import English from "./language/English";
 import Spanish from "./language/Spanish ";
 import Turkish from "./language/Turkish";
 import kurdî from "./language/kurdî";
