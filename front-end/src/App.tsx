@@ -5,9 +5,7 @@ import { DarkModeProvider } from "./components/DarkMod/DarkModeContext";
 import Footer from "./components/Footer/Footer";
 import HeaderPage from "./components/Header/HeaderPage";
 import "./components/Translation/i18n";
-import LoginHeader from "./Pages/LoginPage/LoginHeader";
-import LoginInputs from "./Pages/LoginPage/LoginInputs";
-import LoginSocial from "./Pages/LoginPage/LoginSocial";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 import "./style.module.css";
 
 function App() {
@@ -23,9 +21,7 @@ function App() {
       <div style={{ minHeight: "100vh" }}>
         <Container maxWidth="xl" key={i18n.language}>
           <HeaderPage />
-          <LoginHeader />
-          <LoginInputs langCode={i18n.language} />
-          <LoginSocial />
+          <LoginPage />
           <Footer />
         </Container>
       </div>

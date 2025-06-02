@@ -14,7 +14,6 @@ import styles from "../style.module.css";
 interface LoginInputsProps {
   langCode: string;
 }
-
 const LoginInputs = ({ langCode }: LoginInputsProps) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
@@ -73,6 +72,9 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
                   sx={{
                     background: isDarkMode ? "#333" : "white",
                     color: isDarkMode ? "#fff" : "inherit",
+                    "&:hover": {
+                      background: isDarkMode ? "#333" : "white",
+                    },
                   }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
