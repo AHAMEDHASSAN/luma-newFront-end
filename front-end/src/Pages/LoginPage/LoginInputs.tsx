@@ -14,6 +14,7 @@ import styles from "../style.module.css";
 interface LoginInputsProps {
   langCode: string;
 }
+
 const LoginInputs = ({ langCode }: LoginInputsProps) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
@@ -27,27 +28,35 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
       style: {
         textAlign: langCode === "ar" ? "right" : "left",
         padding: "12px 14px",
-        color: isDarkMode ? "#fff" : "inherit",
+        color: isDarkMode ? "#fff" : "#000", // ✅ نص أبيض في الوضع الداكن
       },
     },
     InputLabelProps: {
       style: {
         textAlign: langCode === "ar" ? "right" : "left",
         width: "100%",
-        color: isDarkMode ? "#fff" : "inherit",
+        color: isDarkMode ? "#aaa" : "#555",
       },
     },
     sx: {
       minWidth: 280,
       maxWidth: 400,
+      backgroundColor: "transparent", // نعتمد على اللون الداخلي للـ input
       "& .MuiOutlinedInput-root": {
-        borderRadius: "4px",
-        "& fieldset": { borderColor: isDarkMode ? "#555" : "#ddd" },
-        "&:hover fieldset": { borderColor: isDarkMode ? "#888" : "#aaa" },
-        color: isDarkMode ? "#fff" : "inherit",
+        borderRadius: "6px",
+        backgroundColor: isDarkMode ? "#000" : "#fff", // ✅ خلفية الإدخال سوداء في الداكن
+        "& fieldset": {
+          borderColor: isDarkMode ? "#444" : "#ccc",
+        },
+        "&:hover fieldset": {
+          borderColor: isDarkMode ? "#666" : "#999",
+        },
+        "& input": {
+          color: isDarkMode ? "#fff" : "#000", // ✅ نص أبيض
+        },
       },
       "& .MuiInputLabel-root, & .MuiInputLabel-root.Mui-focused": {
-        color: isDarkMode ? "#fff" : "inherit",
+        color: isDarkMode ? "#aaa" : "#555",
       },
     },
   };
@@ -70,10 +79,10 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
                   onClick={() => setShowPassword((p) => !p)}
                   edge="end"
                   sx={{
-                    background: isDarkMode ? "#333" : "white",
-                    color: isDarkMode ? "#fff" : "inherit",
+                    color: isDarkMode ? "#fff" : "#000", // ✅ العين بيضاء في الداكن
+                    background: "transparent",
                     "&:hover": {
-                      background: isDarkMode ? "#333" : "white",
+                      background: "transparent",
                     },
                   }}
                 >
@@ -81,7 +90,6 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
                 </IconButton>
               </InputAdornment>
             ),
-            style: { color: isDarkMode ? "#fff" : "inherit" },
           }}
           {...commonStyles}
         />
@@ -91,9 +99,13 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
           fullWidth
           sx={{
             mt: 2,
-            bgcolor: isDarkMode ? "#fff" : "#000",
-            color: isDarkMode ? "#000" : "#fff",
-            border: "1px solid #fff",
+            bgcolor: "#000",
+            color: "#fff",
+            borderRadius: "6px",
+            fontWeight: "bold",
+            "&:hover": {
+              bgcolor: "#222",
+            },
           }}
         >
           {t("login")}
