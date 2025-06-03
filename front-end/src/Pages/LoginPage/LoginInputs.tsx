@@ -13,9 +13,10 @@ import styles from "../style.module.css";
 
 interface LoginInputsProps {
   langCode: string;
+  darkMode: boolean;
 }
 
-const LoginInputs = ({ langCode }: LoginInputsProps) => {
+const LoginInputs = ({ langCode, darkMode }: LoginInputsProps) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const theme = useTheme();
@@ -99,13 +100,10 @@ const LoginInputs = ({ langCode }: LoginInputsProps) => {
           fullWidth
           sx={{
             mt: 2,
-            bgcolor: "#000",
-            color: "#fff",
+            bgcolor: darkMode ? "#83d5fb" : "#1a2a40",
+            color: darkMode ? "#000" : "#fff",
             borderRadius: "6px",
             fontWeight: "bold",
-            "&:hover": {
-              bgcolor: "#222",
-            },
           }}
         >
           {t("login")}

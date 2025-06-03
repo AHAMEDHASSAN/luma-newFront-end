@@ -1,7 +1,7 @@
 import { Box, Divider, IconButton, Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-
+import "../../components/DarkMod/DarkMod";
 const socials = [
   {
     icon: <FaGoogle size={18} />,
@@ -26,7 +26,10 @@ const socials = [
   },
 ];
 
-const LoginSocial = () => {
+type Props = {
+  darkMode: boolean;
+};
+const LoginSocial = ({ darkMode }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -61,18 +64,32 @@ const LoginSocial = () => {
         fontSize={15}
       >
         <Link
-          sx={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           href="#"
           underline="hover"
+          sx={{
+            fontFamily: "Helvetica, Arial, sans-serif",
+            color: darkMode ? "#83d5fb" : "#1976d2",
+          }}
         >
           {t("forgotPassword")}
         </Link>
+
         <Typography
           fontSize={14}
           sx={{ fontFamily: "Helvetica, Arial, sans-serif" }}
         >
           {t("dontHaveAccount")}
-          <Link href="#" underline="hover" sx={{ ml: 0.5 }}>
+          <Link
+            href="#"
+            sx={{
+              ml: 0.5,
+              color: darkMode ? "#83d5fb" : "#1976d2",
+              "&:hover": {
+                textDecoration: "none", // لا يظهر خط تحت عند الهوفر
+                color: darkMode ? "#aee2fc" : "#1565c0", // مثال لتغيير اللون عند الهوفر
+              },
+            }}
+          >
             {t("signUp")}
           </Link>
         </Typography>
